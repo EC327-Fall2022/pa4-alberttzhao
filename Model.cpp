@@ -237,21 +237,27 @@ void Model::CheckTrainerWildPokemon()
     if(GetDistanceBetween(trainer1_location , wildpokemon1_location) == 0)
     {
         GetTrainerPtr(1)->StartFollowingWildPokemon(this, 1, 1);
+        return;
     }
     else if(GetDistanceBetween(trainer1_location , wildpokemon2_location) == 0)
     {
         GetTrainerPtr(1)->StartFollowingWildPokemon(this, 1, 2);
+        return;
     }
     else if(GetDistanceBetween(trainer2_location , wildpokemon1_location) == 0)
     {
         GetTrainerPtr(2)->StartFollowingWildPokemon(this, 2, 1);
+        return;
     }
     else if(GetDistanceBetween(trainer2_location , wildpokemon2_location) == 0)
     {
         GetTrainerPtr(2)->StartFollowingWildPokemon(this, 2, 2);
+        return;
     }
     else
     {
         //do nothing
+        return;
     }
+
 }

@@ -540,4 +540,6 @@ void Trainer::StartFollowingWildPokemon(Model* model, int trainer_id, int wildpo
 {
     cout << "Trainer " << trainer_id << " " << model->GetTrainerPtr(trainer_id)->GetName() << " is following Wild Pokemon " << wildpokemon_id << " " << model->GetWildPokemonPtr(wildpokemon_id)->GetName() << endl;
     bundledWildPokemon.push_back(model->GetWildPokemonPtr(wildpokemon_id));
+
+    return;
 }
