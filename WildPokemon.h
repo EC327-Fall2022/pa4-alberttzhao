@@ -6,10 +6,13 @@
 
 #include "GameObject.h"
 #include "Point2D.h"
+#include "Vector2D.h"
 #include "Trainer.h"
 //#include "Model.h"
 
 using namespace std;
+
+class Trainer; //forward declaration
 
 class WildPokemon : public GameObject
 {
@@ -18,7 +21,7 @@ protected:
     double health;
     bool variant;
     bool in_combat;
-    Point2D location;
+    //Point2D location;
     string name;
     Trainer* current_trainer;
 
@@ -41,11 +44,15 @@ public:
     void ShowStatus();
     bool isAlive();
     bool ShouldBeVisible();
+    string GetName();
 
 
+    //PA4: 
     //follow, don't know if any of these are needed 
     Trainer* GetFollowingTrainer();
     Point2D GetWildPokemonLocation();
+
+    void UpdateLocation(Point2D trainer_location_update);
 
 };
 

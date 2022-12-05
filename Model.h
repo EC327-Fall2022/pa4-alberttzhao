@@ -12,6 +12,9 @@
 
 using namespace std;
 
+class Trainer; //forward declaration
+class WildPokemon; //forward declaration
+
 class Model
 {
 
@@ -53,5 +56,8 @@ public:
     bool Update();
     void Display(View& view);
     void ShowStatus();
+
+    //PA4:
+    void CheckTrainerWildPokemon();
     
 };

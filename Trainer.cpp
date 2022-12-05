@@ -465,7 +465,12 @@ bool Trainer::UpdateLocation()
     }
     else
     {
+
         location = location + delta;
+        for(int i = 0; i < bundledWildPokemon.size(); i++)
+        {
+            bundledWildPokemon[i]->UpdateLocation(location);
+        }
 
         PokeDollars = PokeDollars + GetRandomAmountOfPokeDollars(); //should be right? get random dollar everytime the trainer takes a step
 
@@ -508,10 +513,31 @@ double GetRandomAmountOfPokeDollars()
 } 
 
 
-void Trainer::StartFollowingWildPokemon(WildPokemon* wildpokemon)
+//PA4:
+// bool Trainer::FoundWildPokemon(Model& model)
+// {
+//     Point2D wildpokemon1_location = model.GetWildPokemonPtr(1)->GetLocation();
+//     Point2D wildpokemon2_location = model.GetWildPokemonPtr(2)->GetLocation();
+
+//     if(GetDistanceBetween(location, wildpokemon1_location) == 0)
+//     {
+//         model.GetWildPokemonPtr(1)->UpdateLocation(location);
+//         return true;
+//     }
+//     else if(GetDistanceBetween(location , wildpokemon2_location) == 0)
+//     {
+//         return true;
+//     }
+//     else
+//     {
+//         return false;
+//     }
+// }
+
+
+// //Added for PA4: 
+void Trainer::StartFollowingWildPokemon(Model* model, int trainer_id, int wildpokemon_id)
 {
-    if((wildpokemon->GetFollowingTrainer()->GetLocation()) == (wildpokemon->GetWildPokemonLocation()))
-    {
-        cout << "It is following" << endl;
-    }
+    cout << "Trainer " << trainer_id << " " << model->GetTrainerPtr(trainer_id)->GetName() << " is following Wild Pokemon " << wildpokemon_id << " " << model->GetWildPokemonPtr(wildpokemon_id)->GetName() << endl;
+    bundledWildPokemon.push_back(model->GetWildPokemonPtr(wildpokemon_id));
 }

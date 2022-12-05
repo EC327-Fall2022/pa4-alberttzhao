@@ -148,3 +148,35 @@ void DoRunCommand(Model& model, View& view)
     model.Display(view);
 }
 
+
+// //new function to see if the user wants to follow a WildPokemon:
+// void DoFollowCommand(Model& model)
+// {
+//     Point2D trainer1_position = model.GetTrainerPtr(1)->GetLocation();
+//     Point2D wildpokemon1_position = model.GetWildPokemonPtr(1)->GetLocation();
+//     Point2D trainer2_position = model.GetTrainerPtr(2)->GetLocation();
+//     Point2D wildpokemon2_position = model.GetWildPokemonPtr(2)->GetLocation();
+
+//     if(GetDistanceBetween(trainer1_position, wildpokemon1_position) == 0)
+//     {
+//         cout << model.GetTrainerPtr(1)->GetName() << " found " << model.GetWildPokemonPtr(1)->GetName() << endl;
+//         model.GetTrainerPtr(1)->StartFollowingWildPokemon(model, 1, 1);
+//     }
+//     // else if(GetDistanceBetween(trainer1_position , wildpokemon2_position) == 0)
+//     // {
+//     //     cout << model.GetTrainerPtr(1)->GetName() << " found " << model.GetWildPokemonPtr(2)->GetName() << endl;
+//     //     model.GetTrainerPtr(1)->StartFollowingWildPokemon();
+//     // }
+//     // else if(GetDistanceBetween(trainer2_position , wildpokemon1_position) == 0)
+//     // {
+//     //     model.GetTrainerPtr(2)->StartFollowingWildPokemon();
+//     // }
+//     // else if(GetDistanceBetween(trainer2_position , wildpokemon2_position) == 0)
+//     // {
+//     //     model.GetTrainerPtr(2)->StartFollowingWildPokemon();
+//     // }
+//     // else
+//     // {
+//     //     cout << "No wild pokemon found yet" << endl;
+//     // }
+// }

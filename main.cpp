@@ -13,6 +13,7 @@
 #include "Model.h"
 #include "View.h"
 #include "GameCommand.h"
+#include "WildPokemon.h"
 
 using namespace std;
 
@@ -88,6 +89,7 @@ int main()
         {
             // DoAdvance command
             DoAdvanceCommand(model, view);
+            //DoFollowCommand(model);
             break;
         }
         case 'r':
@@ -105,6 +107,8 @@ int main()
             model.GetPokemonCenterPtr(2)->~PokemonCenter();
             model.GetPokemonGymPtr(1)->~PokemonGym();
             model.GetPokemonGymPtr(2)->~PokemonGym();
+            model.GetWildPokemonPtr(1)->~WildPokemon();
+            model.GetWildPokemonPtr(2)->~WildPokemon();
 
             cout << "*** Program Terminated ***" << endl;
             exit(0);

@@ -10,6 +10,8 @@ WildPokemon::WildPokemon() : GameObject('W')
     state = IN_ENVIRONMENT;
     //name;
     //Trainer* current_trainer
+
+    cout << "WildPokemon default constructed" << endl;
 }
 
 WildPokemon::WildPokemon(string in_name, double in_attack, double in_health, bool in_variant, int id, Point2D in_loc) : GameObject(in_loc, id, 'W')
@@ -19,6 +21,8 @@ WildPokemon::WildPokemon(string in_name, double in_attack, double in_health, boo
     health = in_health;
     variant = in_variant;
     state = IN_ENVIRONMENT;
+
+    cout << "WildPokemon constructed" << endl;
 }
 
 //destructor:
@@ -82,7 +86,8 @@ bool WildPokemon::Update()
 
 void WildPokemon::ShowStatus()
 {
-    cout << "Wild Pokemon Status: " << endl;
+    cout << "Wild Pokemon " << name << " Status: " << endl;
+    GameObject::ShowStatus();
 }
 
 bool WildPokemon::isAlive()
@@ -108,6 +113,17 @@ bool WildPokemon::ShouldBeVisible()
     {
         return false;
     }
+}
+
+string WildPokemon::GetName()
+{
+    return name;
+}
+
+
+void WildPokemon::UpdateLocation(Point2D trainer_location_update)
+{   
+    location = trainer_location_update;
 }
 
 

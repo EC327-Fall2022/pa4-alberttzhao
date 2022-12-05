@@ -7,6 +7,8 @@
 #include <time.h>  
 #include <string>
 #include <random>
+#include <vector>
+
 #include "GameObject.h"
 #include "Point2D.h"
 #include "Vector2D.h"
@@ -14,8 +16,12 @@
 #include "PokemonCenter.h"
 #include "Building.h"
 #include "WildPokemon.h"
+#include "Model.h"
 
 using namespace std;
+
+class WildPokemon; //forward declaration
+class Model;
 
 enum TrainerStates
 {
@@ -52,7 +58,9 @@ public:
     bool Update();
     string GetName();
 
-    void StartFollowingWildPokemon(WildPokemon* wildpokemon);
+    //PA4: 
+    bool FoundWildPokemon(Model& model);
+    void StartFollowingWildPokemon(Model* model, int trainer_id, int wildpokemon_id);
 
     //destructor:
     ~Trainer();
@@ -77,7 +85,11 @@ private:
     PokemonGym* current_gym;
     Point2D destination;
     Vector2D delta;
-    
+
+    //PA4:
+    //From Thomas's suggestion:
+    vector<WildPokemon *> bundledWildPokemon;
+
 };
 
 

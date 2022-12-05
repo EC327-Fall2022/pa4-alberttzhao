@@ -78,6 +78,7 @@ Model::Model()
     WildPokemon* WildPokemon2_ptr = new WildPokemon("Charizard", 5.0, 5.0, false, 2, WildPokemon2_location); //using default constructor? 
     object_ptrs[7] = WildPokemon2_ptr;
     WildPokemon_ptrs[1] = WildPokemon2_ptr;
+    
 
 
     cout << "Model default constructed" << endl;
@@ -150,30 +151,34 @@ bool Model::Update()
     //increment time:
     time = time + 1;
 
+    //From Thomas:
+    bool valid_thomas = false;
+
     for(int i = 0; i < num_objects; i++)
     {
         if(object_ptrs[i]->Update() == true)
         {
             //write two more for loops and use exit(0):
-        int num_gyms_without_battles = 0;
-        for(int j = 0; j < num_gyms; j++)
-        {
-            if(gym_ptrs[j]->passed() == true)
+            int num_gyms_without_battles = 0;
+            for(int j = 0; j < num_gyms; j++)
             {
-                num_gyms_without_battles = num_gyms_without_battles + 1;
+                if(gym_ptrs[j]->passed() == true)
+                {
+                    num_gyms_without_battles = num_gyms_without_battles + 1;
+                }
             }
-        }
 
-        if(num_gyms_without_battles == num_gyms)
-        {
-            cout << "GAME OVER: You win! All battles done! " << endl;
-            exit(0);
-        }
-        
-        return true;
+            if(num_gyms_without_battles == num_gyms)
+            {
+                cout << "GAME OVER: You win! All battles done! " << endl;
+                exit(0);
+            }
+
+            valid_thomas = true; //thomas fixed
         }
 
     }
+    CheckTrainerWildPokemon();
 
 
     int num_trainers_fainted = 0;
@@ -191,7 +196,7 @@ bool Model::Update()
         exit(0);
     }
 
-    return false;
+    return valid_thomas;
 }
 
 
@@ -221,4 +226,32 @@ void Model::ShowStatus(){
 }
 
 
+//PA4:
+void Model::CheckTrainerWildPokemon()
+{
+    Point2D trainer1_location = GetTrainerPtr(1)->GetLocation();
+    Point2D trainer2_location = GetTrainerPtr(2)->GetLocation();
+    Point2D wildpokemon1_location = GetWildPokemonPtr(1)->GetLocation();
+    Point2D wildpokemon2_location = GetWildPokemonPtr(2)->GetLocation();
 
+    if(GetDistanceBetween(trainer1_location , wildpokemon1_location) == 0)
+    {
+        GetTrainerPtr(1)->StartFollowingWildPokemon(this, 1, 1);
+    }
+    else if(GetDistanceBetween(trainer1_location , wildpokemon2_location) == 0)
+    {
+        GetTrainerPtr(1)->StartFollowingWildPokemon(this, 1, 2);
+    }
+    else if(GetDistanceBetween(trainer2_location , wildpokemon1_location) == 0)
+    {
+        GetTrainerPtr(2)->StartFollowingWildPokemon(this, 2, 1);
+    }
+    else if(GetDistanceBetween(trainer2_location , wildpokemon2_location) == 0)
+    {
+        GetTrainerPtr(2)->StartFollowingWildPokemon(this, 2, 2);
+    }
+    else
+    {
+        //do nothing
+    }
+}

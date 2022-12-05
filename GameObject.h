@@ -23,6 +23,9 @@ public:
     char GetState();
     virtual void ShowStatus(); //declare show status to be virtual
 
+    //PA4:
+    //Point2D Get_WildPokemon_Location();
+
     //GameObject deconstructor:
     virtual ~GameObject();
 
