@@ -44,7 +44,7 @@ void View::Plot(GameObject *ptr)
         }
         else
         {
-            if (*selfptr != 't')
+            if(*selfptr != 't')
             {
                 grid[x][y][0] = *selfptr;
                 grid[x][y][1] = *(selfptr + 1);
@@ -57,6 +57,10 @@ void View::Plot(GameObject *ptr)
 
 void View::Draw()
 {
+
+    //visial:
+    //cout << "---" << endl;
+
     for (int j = size - 1; j >= -1; j--)
     {
         for (int i = -1; i <= size - 1; i++)

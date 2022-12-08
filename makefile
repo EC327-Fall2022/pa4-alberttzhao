@@ -1,6 +1,6 @@
 CC=g++ -std=c++11 -g
 
-OBJS= main.o Point2D.o Vector2D.o GameObject.o Building.o PokemonCenter.o PokemonGym.o Trainer.o Model.o GameCommand.o View.o WildPokemon.o
+OBJS= main.o Point2D.o Vector2D.o GameObject.o Building.o PokemonCenter.o PokemonGym.o Trainer.o Model.o GameCommand.o View.o WildPokemon.o 
 
 default: PA4
 
@@ -28,7 +28,7 @@ PokemonGym.o: PokemonGym.cpp PokemonGym.h GameObject.h Point2D.h
 Trainer.o: Trainer.cpp Trainer.h GameObject.h Point2D.h Vector2D.h PokemonCenter.h PokemonGym.h
 	$(CC) -c Trainer.cpp -o Trainer.o
 
-Model.o: Model.cpp Model.h Point2D.h Vector2D.h GameObject.h Building.h PokemonCenter.h PokemonGym.h Trainer.h WildPokemon.h
+Model.o: Model.cpp Model.h Point2D.h Vector2D.h GameObject.h Building.h PokemonCenter.h PokemonGym.h Trainer.h WildPokemon.h Input_Handling.h
 	$(CC) -c Model.cpp -o Model.o
 
 GameCommand.o: GameCommand.cpp GameCommand.h Model.h GameObject.h Trainer.h PokemonGym.h PokemonCenter.h Point2D.h Vector2D.h Building.h View.h WildPokemon.h
@@ -40,7 +40,7 @@ View.o: View.cpp View.h GameObject.h Point2D.h
 WildPokemon.o: WildPokemon.cpp GameObject.h Trainer.h Model.h
 	$(CC) -c WildPokemon.cpp -o WildPokemon.o
 
-main.o: main.cpp Building.o Point2D.o Vector2D.o GameCommand.o PokemonCenter.o Model.o Trainer.o PokemonGym.o GameObject.o View.o WildPokemon.o
+main.o: main.cpp Building.o Point2D.o Vector2D.o GameCommand.o PokemonCenter.o Model.o Trainer.o PokemonGym.o GameObject.o View.o WildPokemon.o 
 	$(CC) -c main.cpp -o main.o
 
 clean: 

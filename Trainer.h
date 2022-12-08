@@ -61,6 +61,7 @@ public:
     //PA4: 
     bool FoundWildPokemon(Model& model);
     void StartFollowingWildPokemon(Model* model, int trainer_id, int wildpokemon_id);
+    bool ChangeLetterIfFollowing();
 
     //destructor:
     ~Trainer();

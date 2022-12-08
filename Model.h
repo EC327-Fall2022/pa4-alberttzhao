@@ -1,7 +1,13 @@
 #pragma once
 
 #include <iostream>
+#include <math.h>
+#include <string>
 #include <vector>
+#include <cstring>
+#include <iomanip>
+#include <sstream>
+#include <stdexcept>
 #include <list>
 #include <iterator>
 
@@ -13,6 +19,7 @@
 #include "Point2D.h"
 #include "View.h"
 #include "WildPokemon.h"
+#include "Input_Handling.h"
 
 using namespace std;
 
@@ -82,5 +89,7 @@ public:
 
     //PA4:
     void CheckTrainerWildPokemon();
+
+    void NewCommand(char type, int in_id, double x, double y);
     
 };

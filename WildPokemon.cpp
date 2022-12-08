@@ -87,7 +87,11 @@ bool WildPokemon::Update()
 void WildPokemon::ShowStatus()
 {
     cout << "Wild Pokemon " << name << " Status: " << endl;
-    GameObject::ShowStatus();
+    GameObject::ShowStatus(); 
+    cout << "Health: " << health << endl;
+    cout << "Attack: " << attack << endl;
+    cout << "Variant: " << variant << endl;
+    cout << "---" << endl;
 }
 
 bool WildPokemon::isAlive()
@@ -125,5 +129,4 @@ void WildPokemon::UpdateLocation(Point2D trainer_location_update)
 {   
     location = trainer_location_update;
 }
-
 

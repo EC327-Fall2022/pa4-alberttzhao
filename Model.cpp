@@ -119,7 +119,7 @@ Model::Model()
     
 
 
-    cout << "Model default constructed" << endl;
+    cout << "Model default constructed" << endl << endl;
 
     ShowStatus();
 
@@ -127,6 +127,10 @@ Model::Model()
 
 Model::~Model()
 {
+    // for(list <GameObject*> :: iterator iter1 = object_ptrs.begin(); iter1 != object_ptrs.end(); iter1++)
+    // {
+    //     delete *iter1;
+    // }
     cout << "Model destructed" << endl;
 }
 
@@ -146,15 +150,23 @@ Trainer* Model::GetTrainerPtr(int id)
     // }
 
     //PA4: modified from above:
-    auto trainer_ptrs_front = trainer_ptrs.begin();
-    if(next(*trainer_ptrs_front, id) != NULL)
+    // auto trainer_ptrs_front = trainer_ptrs.begin();
+    // if(next(*trainer_ptrs_front, id) != NULL)
+    // {
+    //     return next(*trainer_ptrs_front, id);
+    // }
+    // else
+    // {
+    //     return 0;
+    // }
+
+    for (list <Trainer*> :: iterator iter1 = trainer_ptrs.begin(); iter1 != trainer_ptrs.end(); iter1++)
     {
-        return next(*trainer_ptrs_front, id);
+    if ((*iter1)->GetId() == id)
+        return *iter1;
     }
-    else
-    {
-        return 0;
-    }
+
+    return nullptr;
 
 }
 
@@ -171,15 +183,23 @@ PokemonCenter* Model::GetPokemonCenterPtr(int id)
     // }
 
     //PA4: modified from above:
-    auto center_ptrs_front = center_ptrs.begin();
-    if(next(*center_ptrs_front, id) != NULL)
+    // auto center_ptrs_front = center_ptrs.begin();
+    // if(next(*center_ptrs_front, id) != NULL)
+    // {
+    //     return next(*center_ptrs_front, id);
+    // }
+    // else
+    // {
+    //     return 0;
+    // }
+
+    for(list <PokemonCenter*> :: iterator iter1 =center_ptrs.begin(); iter1 != center_ptrs.end(); iter1++)
     {
-        return next(*center_ptrs_front, id);
+        if((*iter1)->GetId() == id)
+            return *iter1;
     }
-    else
-    {
-        return 0;
-    }
+    return nullptr;
+
 }
 
 PokemonGym* Model::GetPokemonGymPtr(int id)
@@ -195,16 +215,24 @@ PokemonGym* Model::GetPokemonGymPtr(int id)
     // }
 
     //PA4: modified from above:
-    auto gym_ptrs_front = gym_ptrs.begin();
-    if(next(*gym_ptrs_front , id) != NULL)
+    // auto gym_ptrs_front = gym_ptrs.begin();
+    // if(next(*gym_ptrs_front , id) != NULL)
+    // {
+    //     return next(*gym_ptrs_front , id);
+    // }
+    // else
+    // {
+    //     return 0;
+    // }
+
+    for(list <PokemonGym*> :: iterator iter1 = gym_ptrs.begin(); iter1 != gym_ptrs.end(); iter1++)
     {
-        return next(*gym_ptrs_front , id);
+    if((*iter1)->GetId() == id)
+            return *iter1; 
     }
-    else
-    {
-        return 0;
-    }
+    return nullptr;
 }
+
 
 
 //PA4:
@@ -221,16 +249,24 @@ WildPokemon* Model::GetWildPokemonPtr(int id)
     // }
 
     //PA4: modified from above:
-    auto WildPokemon_ptrs_front = WildPokemon_ptrs.begin();
-    if(next(*WildPokemon_ptrs_front , id) != NULL)
+    // auto WildPokemon_ptrs_front = WildPokemon_ptrs.begin();
+    // if(next(*WildPokemon_ptrs_front , id) != NULL)
+    // {
+    //     return next(*WildPokemon_ptrs_front , id);
+    // }
+    // else
+    // {
+    //     return 0;
+    // }
+
+    for(list <WildPokemon*> :: iterator iter1 = WildPokemon_ptrs.begin(); iter1 != WildPokemon_ptrs.end(); iter1++)
     {
-        return next(*WildPokemon_ptrs_front , id);
+    if((*iter1)->GetId() == id)
+        return *iter1; 
     }
-    else
-    {
-        return 0;
-    }
+    return nullptr;
 }
+
 
 
 bool Model::Update()
@@ -239,7 +275,7 @@ bool Model::Update()
     time = time + 1;
 
     //From Thomas:
-    bool valid_thomas = false;
+    // bool valid_thomas = false;
 
     // PA3: 
     // for(int i = 0; i < num_objects; i++)
@@ -270,34 +306,33 @@ bool Model::Update()
     // }
 
     //PA4 modified:
-    int object_size = object_ptrs.size();
-    for(int i = 1; i <= object_size; i++)
-    {
-        auto object_ptrs_front1 = object_ptrs.begin();
-        if(next(*object_ptrs_front1 , i)->Update() == true)
-        {
-            int num_gyms_without_battles = 0;
+    // int object_size = object_ptrs.size();
+    // for(int i = 1; i <= object_size; i++)
+    // {
+    //     auto object_ptrs_front1 = object_ptrs.begin();
+    //     if(next(*object_ptrs_front1 , i)->Update() == true)
+    //     {
+    //         int num_gyms_without_battles = 0;
 
-            int gym_size = gym_ptrs.size();
-            for(int j=1; j<= gym_size; j++)
-            {
-                auto gym_ptrs_front1 = gym_ptrs.begin();
-                if(next(*gym_ptrs_front1 , j)->passed() == true)
-                {
-                    num_gyms_without_battles++;
-                }
-            }
+    //         int gym_size = gym_ptrs.size();
+    //         for(int j=1; j<= gym_size; j++)
+    //         {
+    //             auto gym_ptrs_front1 = gym_ptrs.begin();
+    //             if(next(*gym_ptrs_front1 , j)->passed() == true)
+    //             {
+    //                 num_gyms_without_battles++;
+    //             }
+    //         }
 
-            if(num_gyms_without_battles == gym_size)
-            {
-                cout << "GAME OVER: You win! All battles done! " << endl;
-                exit(0);
-            }
+    //         if(num_gyms_without_battles == gym_size)
+    //         {
+    //             cout << "GAME OVER: You win! All battles done! " << endl;
+    //             exit(0);
+    //         }
 
-            valid_thomas = true;
-        }
-    }
-    CheckTrainerWildPokemon();
+    //         valid_thomas = true;
+    //     }
+    // }
 
     // PA3: 
     // int num_trainers_fainted = 0;
@@ -317,26 +352,89 @@ bool Model::Update()
 
     
     //PA4 modified:
-    int num_trainers_fainted = 0;
+    // int num_trainers_fainted = 0;
     
-    int trainer_size = trainer_ptrs.size();
-    for(int k = 0; k <= trainer_size; k++)
+    // int trainer_size = trainer_ptrs.size();
+    // for(int k = 0; k <= trainer_size; k++)
+    // {
+    //     auto trainer_ptrs_front1 = trainer_ptrs.begin();
+    //     if(next(*trainer_ptrs_front1 , k)->HasFainted() == true)
+    //     {
+    //         num_trainers_fainted++;
+    //     }
+    // }
+
+    // if(num_trainers_fainted == num_trainers)
+    // {
+    //     cout << "GAME OVER: You lose! All of your Trainers' Pokemon have fainted! " << endl;
+    //     exit(0);
+    // }
+
+    
+    // return valid_thomas;
+
+    time++;
+    int output = 0;
+    int temp1 = 0;
+    int temp2 = 0;
+    list <GameObject*> :: iterator iter1;
+    for(iter1 = active_ptrs.begin(); iter1 != active_ptrs.end(); iter1++)
     {
-        auto trainer_ptrs_front1 = trainer_ptrs.begin();
-        if(next(*trainer_ptrs_front1 , k)->HasFainted() == true)
+        if((*iter1)->Update() == true)
         {
-            num_trainers_fainted++;
+            output++;
         }
     }
 
-    if(num_trainers_fainted == num_trainers)
+    for(list <GameObject*> :: iterator iter = active_ptrs.begin(); iter != active_ptrs.end(); iter++)
     {
-        cout << "GAME OVER: You lose! All of your Trainers' Pokemon have fainted! " << endl;
+        if(!(*iter)->ShouldBeVisible())
+        {
+            active_ptrs.erase(iter);
+            cout << "GameObject Removed" << endl; //testing
+            break;
+        }
+    }
+    
+    list <PokemonGym*> :: iterator iter2;
+    for(iter2 = gym_ptrs.begin(); iter2 != gym_ptrs.end(); iter2++)
+    {
+        if((*iter2)->GetNumBattlesRemaining() == 0)
+        {
+            temp1++;
+        }
+    }
+
+    list<Trainer*> :: iterator iter3;
+    for(iter3 = trainer_ptrs.begin(); iter3 != trainer_ptrs.end(); iter3++)
+    {
+        if((*iter3)->HasFainted())
+        {
+            temp2++;
+        }
+    }
+
+    CheckTrainerWildPokemon();
+
+    if (temp1 == gym_ptrs.size())
+    {
+        cout << "GAME OVER: You win! All battles done!" << endl;
         exit(0);
     }
 
-    
-    return valid_thomas;
+    if(temp2 == trainer_ptrs.size())
+    {
+        cout << "GAME OVER: You lose! All of your Trainers have lost!" << endl;
+        exit(0);
+    }
+
+    if(output > 0)
+    {
+        return true;
+    }
+
+    return false;
+
 }
 
 
@@ -357,15 +455,25 @@ void Model::Display(View& view)
 
 
     //PA4 modified: 
+    // view.Clear();
+
+    // for(int i = 1; i <= object_ptrs.size(); i++)
+    // {
+    //     auto object_ptrs_front2 = object_ptrs.begin();
+    //     view.Plot(next(*object_ptrs_front2 , i));
+    // }
+
+    // view.Draw();
+
     view.Clear();
 
-    for(int i = 1; i <= object_ptrs.size(); i++)
+    for ( list<GameObject*> :: iterator iter1 = active_ptrs.begin(); iter1 != active_ptrs.end(); iter1++)
     {
-        auto object_ptrs_front2 = object_ptrs.begin();
-        view.Plot(next(*object_ptrs_front2 , i));
+        view.Plot(*iter1);
     }
 
     view.Draw();
+
 }
 
 
@@ -381,12 +489,22 @@ void Model::ShowStatus(){
     // }
 
     //PA4 modified: 
+    // cout << "Time: " << time << endl;
+
+    // for(int i = 1; i <= object_ptrs.size(); i++)
+    // {
+    //     auto object_ptrs_front3 = object_ptrs.begin();
+    //     next(*object_ptrs_front3 , i)->ShowStatus();
+    // }
+
     cout << "Time: " << time << endl;
 
-    for(int i = 1; i <= object_ptrs.size(); i++)
+    //visial:
+    cout << "---" << endl;
+    
+    for(list<GameObject*> :: iterator iter1 = active_ptrs.begin(); iter1 != active_ptrs.end(); iter1++ )
     {
-        auto object_ptrs_front3 = object_ptrs.begin();
-        next(*object_ptrs_front3 , i)->ShowStatus();
+        (*iter1)->ShowStatus();
     }
 }
 
@@ -425,4 +543,60 @@ void Model::CheckTrainerWildPokemon()
         return;
     }
 
+}
+
+
+
+//PA4:
+void Model::NewCommand(char type, int in_id, double x, double y)
+{
+    switch(type)
+    {
+        case 'c': 
+        {
+            for(list <PokemonCenter*> :: iterator iter1 = center_ptrs.begin(); iter1 != center_ptrs.end(); iter1++)
+            {
+                if(in_id == (*iter1)->GetId())
+                throw Invalid_Input("Sorry but please enter a Unique Doctor's Office ID");
+            }
+            PokemonCenter* C = new PokemonCenter(in_id, 100, 2, Point2D(x,y));
+            object_ptrs.push_back(C);
+            active_ptrs.push_back(C);
+            center_ptrs.push_back(C);
+            cout << "New PokemonCenter created" << endl;
+            break;
+        }
+
+        case 'g':
+        {    
+            for(list <PokemonGym*> :: iterator iter1 = gym_ptrs.begin(); iter1 != gym_ptrs.end(); iter1++)
+            {
+                if(in_id == (*iter1)->GetId())
+                throw Invalid_Input("Sorry but please enter a Unique PokemonGym ID");
+            }
+            PokemonGym* G = new PokemonGym(25,2,10,5,in_id,Point2D(x,y));
+            object_ptrs.push_back(G);
+            active_ptrs.push_back(G);
+            gym_ptrs.push_back(G);
+            cout << "New PokemonGym created" << endl;
+            break;
+        }
+
+        case 't':
+        {
+            for(list <Trainer*> :: iterator iter1 = trainer_ptrs.begin(); iter1 != trainer_ptrs.end(); iter1++)
+            {
+                if(in_id == (*iter1)->GetId())
+                throw Invalid_Input("Sorry but please enter a Unique Trainer ID");
+            }
+            Trainer* T = new Trainer("NewTrainer",in_id,'S',1,Point2D(x,y));
+            object_ptrs.push_back(T);
+            active_ptrs.push_back(T);
+            trainer_ptrs.push_back(T);
+            cout << "New Trainer created" << endl;
+            break;
+        } 
+        default:
+        cout << "Unrecognized command code for creating new object" << endl;
+    }
 }

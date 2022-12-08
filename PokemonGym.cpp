@@ -115,16 +115,22 @@ bool PokemonGym::passed()
 //should be correct
 void PokemonGym::ShowStatus()
 {
-    cout << "PokemonGymStatus: " << endl;
+    cout << "PokemonGym Status: " << endl;
     Building::ShowStatus();
     cout << "Max number of battles: " << max_number_of_battles << endl;
     cout << "Health cost per battle: " << health_cost_per_battle << endl;
     cout << "PokeDollar per battle: " << PokeDollar_cost_per_battle << endl;
     cout << "Experience per battle: " << experience_per_battle << endl;
     if(num_battle_remaining <= 1)
+    {
         cout << num_battle_remaining << " battle is remaining for this PokemonGym" << endl;
+        cout << "---" << endl;
+    }
     else
+    {
         cout << num_battle_remaining << " battles are remaining for this PokemonGym" << endl;
+        cout << "---" << endl;
+    }
 
     return;
 }

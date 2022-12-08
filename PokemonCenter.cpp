@@ -115,10 +115,16 @@ void PokemonCenter::ShowStatus()
     Building::ShowStatus();
     cout << "PokeDollars per potion: " << pokedollar_cost_per_potion << endl;
     if(num_potions_remaining <= 1)
+    {
         cout << "has " << num_potions_remaining << " potion remaining." << endl;
+        cout << "---" << endl;
+    }
     else
+    {
         cout << "have " << num_potions_remaining << " potions remaining." << endl;
-
+        cout << "---" << endl;
+    }
+    
     return;
 }
 

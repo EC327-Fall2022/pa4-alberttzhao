@@ -272,51 +272,60 @@ void Trainer::ShowStatus()
             cout << "Health: " << health << endl;
             cout << "PokeDollars: " << PokeDollars << endl;
             cout << "Experience: " << experience << endl;
+            cout << "---" << endl;
             break;
         case 1:
             cout << "moving at a speed of " << speed << " to destination " << destination << " at each step of " << delta << endl;
             cout << "Health: " << health << endl;
             cout << "PokeDollars: " << PokeDollars << endl;
             cout << "Experience: " << experience << endl;
+            cout << "---" << endl;
             break;
         case 6:
             cout << "heading to PokemonGym " << current_gym->GetId() << " at a speed of " << speed << " at each step of " << delta << endl;
             cout << "Health: " << health << endl;
             cout << "PokeDollars: " << PokeDollars << endl;
             cout << "Experience: " << experience << endl;
+            cout << "---" << endl;
             break;
         case 5:
             cout << "heading to Pokemon Center " << current_center->GetId() << " at a speed of " << speed << " at each step of " << delta << endl;
             cout << "Health: " << health << endl;
             cout << "PokeDollars: " << PokeDollars << endl;
             cout << "Experience: " << experience << endl;
+            cout << "---" << endl;
             break;
         case 4:
             cout << "inside PokemonGym " << current_gym->GetId() << endl;
             cout << "Health: " << health << endl;
             cout << "PokeDollars: " << PokeDollars << endl;
             cout << "Experience: " << experience << endl;
+            cout << "---" << endl;
             break;
         case 3:
             cout << "inside PokemonCenter " << current_center->GetId() << endl;
             cout << "Health: " << health << endl;
             cout << "PokeDollars: " << PokeDollars << endl;
             cout << "Experience: " << experience << endl;
+            cout << "---" << endl;
             break;
         case 7:
             cout << "battling in PokemonGym " << current_gym->GetId() << endl;
             cout << "Health: " << health << endl;
             cout << "PokeDollars: " << PokeDollars << endl;
             cout << "Experience: " << experience << endl;
+            cout << "---" << endl;
             break;
         case 8:
             cout << "recovering health in Pokemon Center " << current_center->GetId() << endl;
             cout << "Health: " << health << endl;
             cout << "PokeDollars: " << PokeDollars << endl;
             cout << "Experience: " << experience << endl;
+            cout << "---" << endl;
             break;
         case 2:
             cout << "fainted" << endl;
+            cout << "---" << endl;
             
     }
 }
@@ -461,6 +470,10 @@ bool Trainer::UpdateLocation()
     {
         cout << display_code << id_num << ": I'm there!" << endl;
         location = destination; //? don't know if I have to do location.x = destination.x or not
+
+        //visial:
+        cout << "---" << endl;
+
         return true;
     }
     else
@@ -470,6 +483,9 @@ bool Trainer::UpdateLocation()
         for(int i = 0; i < bundledWildPokemon.size(); i++)
         {
             bundledWildPokemon[i]->UpdateLocation(location);
+
+            //visial:
+            cout << "---" << endl;
         }
 
         PokeDollars = PokeDollars + GetRandomAmountOfPokeDollars(); //should be right? get random dollar everytime the trainer takes a step
@@ -479,6 +495,8 @@ bool Trainer::UpdateLocation()
         }
 
         cout << display_code << id_num << ": step..." << endl;
+        //visial:
+        cout << "---" << endl;
         return false;
     }
 }
@@ -540,6 +558,9 @@ void Trainer::StartFollowingWildPokemon(Model* model, int trainer_id, int wildpo
 {
     cout << "Trainer " << trainer_id << " " << model->GetTrainerPtr(trainer_id)->GetName() << " is following Wild Pokemon " << wildpokemon_id << " " << model->GetWildPokemonPtr(wildpokemon_id)->GetName() << endl;
     bundledWildPokemon.push_back(model->GetWildPokemonPtr(wildpokemon_id));
+
+
+    display_code = 't'; 
 
     return;
 }
