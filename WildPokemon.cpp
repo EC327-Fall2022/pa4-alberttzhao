@@ -73,24 +73,60 @@ bool WildPokemon::get_in_combat()
 
 bool WildPokemon::Update()
 {
-    if(health == 0)
+    /*
+    IN_ENVIRONMENT = 0,
+    DEAD = 1,
+    IN_TRAINER = 2
+    */
+    switch(state)
     {
-        state = DEAD;
+        case 0:
+            //cout << "in the environment" << endl;
+            return true;
+            break;
+        case 1:
+            //cout << "dead" << endl;
+            return true;
+            break;
+        case 2:
+            //cout << "in trainer" << endl;
+            return true;
+            break;
+        default:
+            state = IN_ENVIRONMENT;
+            return false;
+            break;
     }
-    // else if
-    // {
-    //     //state 'IN_TRAINER': when the Wild Pokemon is following a trainer 
-    // }
-    return true;
 }
 
 void WildPokemon::ShowStatus()
-{
+{    
+
+
     cout << "Wild Pokemon " << name << " Status: " << endl;
     GameObject::ShowStatus(); 
+
+    switch(state)
+    {
+        case 0: //IN_ENVIRONMENT
+            cout << "in the environment" << endl;
+            break;
+        case 1: //DEAD
+            cout << "dead" << endl;
+            break;
+        case 2: //IN_TRAINER
+            cout << "is following trainer" << endl;
+            break;
+        default:
+            cout << "in the environment" << endl;
+            break;
+    }
+
+
     cout << "Health: " << health << endl;
     cout << "Attack: " << attack << endl;
     cout << "Variant: " << variant << endl;
+
     cout << "---" << endl;
 }
 
@@ -127,6 +163,7 @@ string WildPokemon::GetName()
 
 void WildPokemon::UpdateLocation(Point2D trainer_location_update)
 {   
+    state = IN_TRAINER;
     location = trainer_location_update;
 }
 

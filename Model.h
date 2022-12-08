@@ -91,5 +91,8 @@ public:
     void CheckTrainerWildPokemon();
 
     void NewCommand(char type, int in_id, double x, double y);
+
+    // void save(ofstream& file);
+    // void restore(ifstream& file);
     
 };

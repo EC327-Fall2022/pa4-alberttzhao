@@ -556,11 +556,13 @@ double GetRandomAmountOfPokeDollars()
 // //Added for PA4: 
 void Trainer::StartFollowingWildPokemon(Model* model, int trainer_id, int wildpokemon_id)
 {
-    cout << "Trainer " << trainer_id << " " << model->GetTrainerPtr(trainer_id)->GetName() << " is following Wild Pokemon " << wildpokemon_id << " " << model->GetWildPokemonPtr(wildpokemon_id)->GetName() << endl;
+    //cout << "is following trainer " << trainer_id << endl;
+    //cout << "Trainer " << trainer_id << " " << model->GetTrainerPtr(trainer_id)->GetName() << " is following Wild Pokemon " << wildpokemon_id << " " << model->GetWildPokemonPtr(wildpokemon_id)->GetName() << endl;
     bundledWildPokemon.push_back(model->GetWildPokemonPtr(wildpokemon_id));
 
 
     display_code = 't'; 
+    cout << "WildPokemon " << model->GetWildPokemonPtr(wildpokemon_id)->GetName() << " is in combat with trainer: " << model->GetTrainerPtr(trainer_id)->GetName() << endl;
 
     return;
 }
