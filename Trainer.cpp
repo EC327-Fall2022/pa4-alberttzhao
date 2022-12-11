@@ -18,7 +18,7 @@ Trainer::Trainer() : GameObject('B') //verify this later
     //initialize other variables:
     is_at_center = false;
     is_IN_GYM = false;
-    health = 20;
+    health = 25;
     experience = 0;
     PokeDollars = 0;
     battles_to_buy = 0;
@@ -26,6 +26,7 @@ Trainer::Trainer() : GameObject('B') //verify this later
     //name
     current_center = NULL;
     current_gym = NULL;
+    following_wild_pokemon = false;
     //destination;
     //delta;
     //state = STOPPED; //newly added...don't know if this works or if it is necessary
@@ -39,7 +40,7 @@ Trainer::Trainer(char in_code) : GameObject(in_code)
     //initialize other variables:
     is_at_center = false;
     is_IN_GYM = false;
-    health = 20;
+    health = 25;
     experience = 0;
     PokeDollars = 0;
     battles_to_buy = 0;
@@ -47,6 +48,7 @@ Trainer::Trainer(char in_code) : GameObject(in_code)
     //name
     current_center = NULL;
     current_gym = NULL;
+    following_wild_pokemon = false; 
     //destination;
     //delta;
     //state = STOPPED; 
@@ -61,7 +63,7 @@ Trainer::Trainer(string in_name, int in_id, char in_code, unsigned int in_speed,
     //initialize other variables:
     is_at_center = false;
     is_IN_GYM = false;
-    health = 20;
+    health = 25;
     experience = 0;
     PokeDollars = 0;
     battles_to_buy = 0;
@@ -69,6 +71,7 @@ Trainer::Trainer(string in_name, int in_id, char in_code, unsigned int in_speed,
     //name
     current_center = NULL;
     current_gym = NULL;
+    following_wild_pokemon = false; 
     //destination;
     //delta;
     //state = STOPPED;
@@ -243,10 +246,20 @@ bool Trainer::HasFainted()
 
 bool Trainer::ShouldBeVisible()
 {
-    if(state == FAINTED)
-        return false;
-    else
+    // if(state == FAINTED)
+    //     return false;
+    // else
+    //     return true;
+
+    if(health > 0)
+    {
         return true;
+    }
+    else
+    {
+        state = FAINTED; 
+        return false;
+    }
 }
 
 /*
@@ -491,7 +504,9 @@ bool Trainer::UpdateLocation()
         PokeDollars = PokeDollars + GetRandomAmountOfPokeDollars(); //should be right? get random dollar everytime the trainer takes a step
 
         if(health != 0){
+
             health = health - 1; //lose one health everytime you move
+
         }
 
         cout << display_code << id_num << ": step..." << endl;
@@ -507,18 +522,6 @@ string Trainer::GetName()
 }
 
 
-// //get random amount of PokeDollar everytime the trainer takes a step:
-// //non-member function:
-// double GetRandomAmountOfPokeDollars()
-// {
-// 	srand((unsigned) time(NULL));
-
-//     float random = 1.0 + (rand() % 10.0);
-
-//     return rando;
-// }
-
-
 //non-member function
 double GetRandomAmountOfPokeDollars()
 {
@@ -531,38 +534,30 @@ double GetRandomAmountOfPokeDollars()
 } 
 
 
-//PA4:
-// bool Trainer::FoundWildPokemon(Model& model)
-// {
-//     Point2D wildpokemon1_location = model.GetWildPokemonPtr(1)->GetLocation();
-//     Point2D wildpokemon2_location = model.GetWildPokemonPtr(2)->GetLocation();
-
-//     if(GetDistanceBetween(location, wildpokemon1_location) == 0)
-//     {
-//         model.GetWildPokemonPtr(1)->UpdateLocation(location);
-//         return true;
-//     }
-//     else if(GetDistanceBetween(location , wildpokemon2_location) == 0)
-//     {
-//         return true;
-//     }
-//     else
-//     {
-//         return false;
-//     }
-// }
-
 
 // //Added for PA4: 
 void Trainer::StartFollowingWildPokemon(Model* model, int trainer_id, int wildpokemon_id)
 {
-    //cout << "is following trainer " << trainer_id << endl;
-    //cout << "Trainer " << trainer_id << " " << model->GetTrainerPtr(trainer_id)->GetName() << " is following Wild Pokemon " << wildpokemon_id << " " << model->GetWildPokemonPtr(wildpokemon_id)->GetName() << endl;
     bundledWildPokemon.push_back(model->GetWildPokemonPtr(wildpokemon_id));
 
+    wildpokemon_attack = model->GetWildPokemonPtr(wildpokemon_id)->get_attack();
+    health = health - wildpokemon_attack;
 
-    display_code = 't'; 
-    cout << "WildPokemon " << model->GetWildPokemonPtr(wildpokemon_id)->GetName() << " is in combat with trainer: " << model->GetTrainerPtr(trainer_id)->GetName() << endl;
+    following_wild_pokemon = true; 
+
+    if(model->GetWildPokemonPtr(wildpokemon_id)->ShouldBeVisible() == true)
+    {
+        display_code = 't'; 
+    }
+    else
+    {
+        display_code = 'T';
+    }
+
+    if(state != FAINTED)
+    {
+        cout << "WildPokemon " << model->GetWildPokemonPtr(wildpokemon_id)->GetName() << " is in combat with trainer: " << model->GetTrainerPtr(trainer_id)->GetName() << endl;
+    }
 
     return;
 }

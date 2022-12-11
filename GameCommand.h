@@ -2,6 +2,8 @@
 #pragma once
 
 #include <iostream>
+#include <ostream>
+#include <string> 
 
 #include "Model.h"
 #include "Point2D.h"
@@ -18,5 +20,6 @@ void DoRecoverInCenterCommand(Model& model, int trainer_id, unsigned int potions
 void DoAdvanceCommand(Model& model, View& view);
 void DoRunCommand(Model& model, View& view);
 
+
 //PA4:
-void DoFollowCommand(Model& model);
+// void DoSaveCommand(Model& model, string file_name);

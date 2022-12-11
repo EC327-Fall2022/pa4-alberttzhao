@@ -76,11 +76,13 @@ private:
     double speed;
     bool is_at_center;
     bool is_IN_GYM;
-    unsigned int health;
+    int health;
+    int wildpokemon_attack;
     unsigned int experience;
     double PokeDollars;
     unsigned int battles_to_buy;
     unsigned int potions_to_buy;
+    bool following_wild_pokemon; 
     string name;
     PokemonCenter* current_center;
     PokemonGym* current_gym;

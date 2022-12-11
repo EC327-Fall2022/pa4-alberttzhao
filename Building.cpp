@@ -56,3 +56,8 @@ bool Building::ShouldBeVisible()
 {
     return true;
 }
+
+// void Building::save(ostream file)
+// {
+//     file << trainer_count;
+// }

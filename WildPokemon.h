@@ -8,7 +8,7 @@
 #include "Point2D.h"
 #include "Vector2D.h"
 #include "Trainer.h"
-//#include "Model.h"
+#include "Model.h"
 
 using namespace std;
 
@@ -17,8 +17,8 @@ class Trainer; //forward declaration
 class WildPokemon : public GameObject
 {
 protected:
-    double attack;
-    double health;
+    int attack;
+    int health;
     bool variant;
     bool in_combat;
     //Point2D location;
@@ -37,7 +37,7 @@ public:
 
     void follow(Trainer* t);
     bool get_variant();
-    double get_attack();
+    int get_attack();
     double get_health();
     bool get_in_combat();
     bool Update();

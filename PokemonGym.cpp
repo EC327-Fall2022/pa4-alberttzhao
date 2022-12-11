@@ -134,3 +134,12 @@ void PokemonGym::ShowStatus()
 
     return;
 }
+
+// void PokemonGym::save(ostream& file)
+// {
+//     Building::save(file);
+//     file << max_number_of_battles;
+//     file << health_cost_per_battle;
+//     file << PokeDollar_cost_per_battle;
+//     file << experience_per_battle; 
+// }

@@ -10,6 +10,9 @@
 #include <stdexcept>
 #include <list>
 #include <iterator>
+#include <fstream>
+#include <string> 
+#include <ostream>
 
 
 #include "GameObject.h"
@@ -92,7 +95,8 @@ public:
 
     void NewCommand(char type, int in_id, double x, double y);
 
+    //PA4 extra credit: 
     // void save(ofstream& file);
-    // void restore(ifstream& file);
+    //void restore(ifstream& file);
     
 };

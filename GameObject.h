@@ -38,5 +38,4 @@ public:
     //from view:
     void DrawSelf(char *ptr);
 
-    
 };

@@ -41,6 +41,9 @@ public:
     bool passed ();
     void ShowStatus();
 
+    //PA4 extra credit:
+    // virtual void save(ostream& file);
+
 };
 
 

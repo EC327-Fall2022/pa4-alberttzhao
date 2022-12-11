@@ -56,7 +56,7 @@ bool WildPokemon::get_variant()
     return variant;
 }
 
-double WildPokemon::get_attack()
+int WildPokemon::get_attack()
 {
     return attack;
 }
@@ -85,7 +85,7 @@ bool WildPokemon::Update()
             return true;
             break;
         case 1:
-            //cout << "dead" << endl;
+            cout << "dead" << endl;
             return true;
             break;
         case 2:
@@ -101,11 +101,8 @@ bool WildPokemon::Update()
 
 void WildPokemon::ShowStatus()
 {    
-
-
     cout << "Wild Pokemon " << name << " Status: " << endl;
     GameObject::ShowStatus(); 
-
     switch(state)
     {
         case 0: //IN_ENVIRONMENT
@@ -145,7 +142,16 @@ bool WildPokemon::isAlive()
 
 bool WildPokemon::ShouldBeVisible()
 {
-    if(isAlive() == true)
+    // if(isAlive() == true)
+    // {
+    //     return true;
+    // }
+    // else
+    // {
+    //     return false;
+    // }
+
+    if(health > 0)
     {
         return true;
     }
@@ -164,6 +170,7 @@ string WildPokemon::GetName()
 void WildPokemon::UpdateLocation(Point2D trainer_location_update)
 {   
     state = IN_TRAINER;
+    health = health - 1;
     location = trainer_location_update;
 }
 
