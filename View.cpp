@@ -25,8 +25,6 @@ void View::Clear()
 
 void View::Plot(GameObject *ptr)
 {
-    // Point2D location_returned;
-    // location_returned = ptr->GetLocation();
 
     int x;
     int y;
@@ -102,24 +100,6 @@ void View::Draw()
 
 bool View::GetSubscripts(int &out_x, int &out_y, Point2D location)
 {
-    //following code from Albert: 
-
-    /*
-    out_x = (location.x - origin.x) / scale;
-    out_y = (location.y - origin.y) / scale;
-
-    if (out_x > view_maxsize || out_y > view_maxsize)
-    {
-        cout << "An Object is oustside the display " << endl;
-        return false;
-    }
-    else
-    {
-        return true;
-    }
-    */
-
-   //following code from instructor:
 
     out_x = (location.x)/2;
     out_y = (location.y)/2;

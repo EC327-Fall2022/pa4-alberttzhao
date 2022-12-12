@@ -495,11 +495,15 @@ bool Trainer::UpdateLocation()
         location = location + delta;
         for(int i = 0; i < bundledWildPokemon.size(); i++)
         {
+            cout << "RUNNINGGGGG: " << i << endl;
             bundledWildPokemon[i]->UpdateLocation(location);
 
             //visial:
             cout << "---" << endl;
         }
+
+
+        cout << "---" << endl;
 
         PokeDollars = PokeDollars + GetRandomAmountOfPokeDollars(); //should be right? get random dollar everytime the trainer takes a step
 
@@ -540,8 +544,7 @@ void Trainer::StartFollowingWildPokemon(Model* model, int trainer_id, int wildpo
 {
     bundledWildPokemon.push_back(model->GetWildPokemonPtr(wildpokemon_id));
 
-    wildpokemon_attack = model->GetWildPokemonPtr(wildpokemon_id)->get_attack();
-    health = health - wildpokemon_attack;
+    model->GetWildPokemonPtr(wildpokemon_id)->follow(model->GetTrainerPtr(trainer_id));
 
     following_wild_pokemon = true; 
 
@@ -560,4 +563,9 @@ void Trainer::StartFollowingWildPokemon(Model* model, int trainer_id, int wildpo
     }
 
     return;
+}
+
+void Trainer::ReduceHealth(int reduction)
+{
+    health = health - reduction;
 }

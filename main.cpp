@@ -105,7 +105,7 @@ int main()
             switch (command)
             {
             case 'n':
-                if (type != 'd' && type != 'c' && type != 's' && type != 'v' && type != 'h')
+                if (type != 'g' && type != 'c' && type != 't' && type != 'w')
                 {
                     throw Invalid_Input("Was expecting a recognizable TYPE");
                 }

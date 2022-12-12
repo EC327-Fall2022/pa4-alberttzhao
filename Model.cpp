@@ -298,7 +298,7 @@ void Model::NewCommand(char type, int in_id, double x, double y)
             for(list <PokemonCenter*> :: iterator iter1 = center_ptrs.begin(); iter1 != center_ptrs.end(); iter1++)
             {
                 if(in_id == (*iter1)->GetId())
-                throw Invalid_Input("Sorry but please enter a Unique Doctor's Office ID");
+                throw Invalid_Input("Sorry but please enter a Unique PokemonCenter ID");
             }
             PokemonCenter* C = new PokemonCenter(in_id, 100, 2, Point2D(x,y));
             object_ptrs.push_back(C);
@@ -330,13 +330,28 @@ void Model::NewCommand(char type, int in_id, double x, double y)
                 if(in_id == (*iter1)->GetId())
                 throw Invalid_Input("Sorry but please enter a Unique Trainer ID");
             }
-            Trainer* T = new Trainer("NewTrainer",in_id,'S',1,Point2D(x,y));
+            Trainer* T = new Trainer("NewTrainer",in_id,'T',1,Point2D(x,y));
             object_ptrs.push_back(T);
             active_ptrs.push_back(T);
             trainer_ptrs.push_back(T);
             cout << "New Trainer created" << endl;
             break;
         } 
+
+        case 'w':
+        {
+            for(list <WildPokemon*> :: iterator iter1 = WildPokemon_ptrs.begin(); iter1 != WildPokemon_ptrs.end(); iter1++)
+            {
+                if(in_id == (*iter1)->GetId())
+                throw Invalid_Input("Sorry but please enter a Unique Trainer ID");
+            }
+            WildPokemon* W = new WildPokemon("NewWildPokemon", 5, 2, false, in_id, Point2D(x,y));
+            object_ptrs.push_back(W);
+            active_ptrs.push_back(W);
+            WildPokemon_ptrs.push_back(W);
+            cout << "New WildPokemon created" << endl;
+            break;
+        }
         default:
         cout << "Unrecognized command code for creating new object" << endl;
     }

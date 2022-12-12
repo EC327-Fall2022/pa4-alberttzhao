@@ -62,6 +62,7 @@ public:
     bool FoundWildPokemon(Model& model);
     void StartFollowingWildPokemon(Model* model, int trainer_id, int wildpokemon_id);
     bool ChangeLetterIfFollowing();
+    void ReduceHealth(int reduction);
 
     //destructor:
     ~Trainer();

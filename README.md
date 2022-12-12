@@ -108,7 +108,7 @@ Everytime the trainer moves, the trainer will lose 1 health:
 However, the trainer will also gain a random number of pokedollar each time it moves
 - trainer gain a random amount of (between $0.0-$2.0) pokedollar when it moves (1 tick)
 
-**So, the trainer loses health when it moves but gains pokedollars in the meanwhile. **
+So, the trainer loses health when it moves but gains pokedollars in the meanwhile. 
 
 
 ## How WildPokemon Behave:
@@ -118,6 +118,8 @@ WildPokemon has its own health points and attack points.
 When a trainer appraoches a wildpokemon (at the same location):
 - wildpokemon will start to follow the trainer
 - trainer's display code will turn to a lower case t
+     - However, on the grid, it will only display W even if a wildpokemon is following a trainer. 
+     - So for example, when wildpokmeon W1 starts to follow trainer T1, instead of displaying * on the grid, it will just display W1. 
 - every time the trainer moves, it's health will decrease by wildpokemon's attack value, instead of the usual 1. 
     - for example:
         if a wildpokemon has an attack value of 3. Everytime time trainer takes a step while followed by the wildpokemon, it's health will be reduced by 3. 
@@ -140,12 +142,14 @@ When an object dies:
         }
     }
     ```
-- **After an object is deleted from the active_ptrs list, it will no longer appear on the grid and show status information. **
+- After an object is deleted from the active_ptrs list, it will no longer appear on the grid and show status information. 
     - for example:
         - let's say that a trainer fainted because its health <= 0
         - that trainer will be removed from active_ptrs
         - the trainer will disappear from the grid 
         - the trainer's information, such as location, amount of money and experiences, will also disappear from the information list
+
+
 
 
 
