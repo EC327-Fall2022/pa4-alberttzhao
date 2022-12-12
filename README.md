@@ -14,5 +14,10 @@ Starting the game, there are 7 objects in total:
 ## Commands:
 There are several commands you can use to play this game:
 - n <object_char> <id_num> <x_position> <y_position>
+for example:
+'
+n C 3 15 9
+'
+
 
 ## How Trainer Behave: 
