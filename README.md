@@ -124,5 +124,22 @@ When a trainer appraoches a wildpokemon (at the same location):
 - however, each time wildpokemon takes a step, it will also lose its health by 1
     - it is possible for wildpokemon to die!
 
-##How Trainer Bahave when in contact with Wild Pokemon: 
+
+## More Detail on Objects:
+
+When an object dies:
+- when an object dies, it's pointer is deleted from the active pointer list:
+    ```
+        for(list <GameObject*> :: iterator iter = active_ptrs.begin(); iter != active_ptrs.end(); iter++)
+    {
+        if((*iter)->ShouldBeVisible() == false)
+        {
+            cout << (*iter)->GetState() << (*iter)->GetId() << " GameObject Removed" << endl; 
+            active_ptrs.erase(iter);
+            break;
+        }
+    }
+    ```
+
+    
 
