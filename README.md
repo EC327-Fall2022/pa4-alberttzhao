@@ -140,6 +140,14 @@ When an object dies:
         }
     }
     ```
+- **After an object is deleted from the active_ptrs list, it will no longer appear on the grid and show status information. **
+    - for example:
+        - let's say that a trainer fainted because its health <= 0
+        - that trainer will be removed from active_ptrs
+        - the trainer will disappear from the grid 
+        - the trainer's information, such as location, amount of money and experiences, will also disappear from the information list
+
+
 
 
 
