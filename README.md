@@ -119,11 +119,10 @@ When a trainer appraoches a wildpokemon (at the same location):
 - wildpokemon will start to follow the trainer
 - trainer's display code will turn to a lower case t
 - every time the trainer moves, it's health will decrease by wildpokemon's attack value, instead of the usual 1. 
-- for example:
-    if a wildpokemon has an attack value of 3
-    everytime time trainer takes a step while followed by the wildpokemon, it's health will be reduced by 3. 
-- however, each time wildpokemon takes a step, it will also lose its health by 1
-    it is possible for wildpokemon to die!
+    - for example:
+        if a wildpokemon has an attack value of 3. Everytime time trainer takes a step while followed by the wildpokemon, it's health will be reduced by 3. 
+    - however, each time wildpokemon takes a step, it will also lose its health by 1
+        it is possible for wildpokemon to die!
 
 ##How Trainer Bahave when in contact with Wild Pokemon: 
 
