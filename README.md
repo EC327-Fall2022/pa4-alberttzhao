@@ -129,8 +129,8 @@ When a trainer appraoches a wildpokemon (at the same location):
 
 When an object dies:
 - when an object dies, it's pointer is deleted from the active pointer list:
-    ```
-        for(list <GameObject*> :: iterator iter = active_ptrs.begin(); iter != active_ptrs.end(); iter++)
+    ```cpp
+    for(list <GameObject*> :: iterator iter = active_ptrs.begin(); iter != active_ptrs.end(); iter++)
     {
         if((*iter)->ShouldBeVisible() == false)
         {
@@ -141,5 +141,5 @@ When an object dies:
     }
     ```
 
-    
+
 
