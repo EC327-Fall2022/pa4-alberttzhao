@@ -96,6 +96,9 @@ There are several commands you can use to play this game:
     Quit the game. Terminate the program
 
 
-
-
 ## How Trainer Behave: 
+Stating the game, each trainer will have:
+- 25 health
+- 0 experiences
+- 0 poke dollars. 
+
