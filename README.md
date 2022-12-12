@@ -45,7 +45,7 @@ There are several commands you can use to play this game:
     ```
     this will move trainer 1 to gym 1
 
-5. s <trainer_d>
+5. **s <trainer_d>**
 
     for example:
     ```
@@ -53,6 +53,42 @@ There are several commands you can use to play this game:
     ```
     this will stop trainer 2 
 
+6. **p <trainer_id> <center_id>
+    for example:
+    ```
+    p 1 2
+    ```
+    this will recover trainer 1's health in center 2
+    will not recover health if trainer 1 is not inside center 2
+
+7. **b <trainer_id> <gym_id>**
+    for example:
+    ```
+    b 1 2
+    ```
+    this will allow trainer 1 to battle in gym 2
+    will not battle if trainer 1 is not inside gym 2
+
+8. **a**
+    for example: 
+    ```
+    a
+    ```
+    advance the game 1 tick. 
+
+9. **r**
+    for example:
+    ```
+    r
+    ```
+    advance the game 5 ticks
+
+10. **q**
+    for example:
+    ```
+    q
+    ```
+    Quit the game. Terminate the program
 
 
 
