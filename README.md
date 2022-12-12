@@ -13,7 +13,7 @@ Starting the game, there are 7 objects in total:
 
 ## Game Commands:
 There are several commands you can use to play this game:
-1. n <object_char> <id_num> <x_position> <y_position>
+1. **n <object_char> <id_num> <x_position> <y_position>**
 
 for example:
 ```
@@ -21,14 +21,37 @@ n C 3 15 9
 ```
 This will create a new PokemonCenter C3 at (15,9)
 
-
-2. m <trainer_id> <x_position> <y_position>
+2. **m <trainer_id> <x_position> <y_position>**
 
 for example:
 ```
 m 1 10 12
 ```
 This will move trainer 1 to (10,12)
+
+3. **c <trainer_id> <center_id>**
+
+for example:
+```
+c 1 1
+```
+this will move trainer 1 to center 1
+
+4. **g <trainer_id> <gym_id>**
+
+for example:
+```
+g 1 1
+```
+this will move trainer 1 to gym 1
+
+5. s <trainer_d>
+
+for example:
+```
+s 2
+```
+this will stop trainer 2 
 
 
 
