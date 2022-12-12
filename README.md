@@ -54,6 +54,7 @@ There are several commands you can use to play this game:
     this will stop trainer 2 
 
 6. **p <trainer_id> <center_id>
+
     for example:
     ```
     p 1 2
@@ -62,6 +63,7 @@ There are several commands you can use to play this game:
     will not recover health if trainer 1 is not inside center 2
 
 7. **b <trainer_id> <gym_id>**
+
     for example:
     ```
     b 1 2
@@ -70,6 +72,7 @@ There are several commands you can use to play this game:
     will not battle if trainer 1 is not inside gym 2
 
 8. **a**
+
     for example: 
     ```
     a
@@ -77,6 +80,7 @@ There are several commands you can use to play this game:
     advance the game 1 tick. 
 
 9. **r**
+
     for example:
     ```
     r
@@ -84,11 +88,13 @@ There are several commands you can use to play this game:
     advance the game 5 ticks
 
 10. **q**
+
     for example:
     ```
     q
     ```
     Quit the game. Terminate the program
+
 
 
 
