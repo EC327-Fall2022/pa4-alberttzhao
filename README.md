@@ -19,6 +19,17 @@ for example:
 ```
 n C 3 15 9
 ```
+This will create a new PokemonCenter C3 at (15,9)
+
+- m <trainer_id> <x_position> <y_position>
+
+for example:
+```
+m 1 10 12
+```
+This will move trainer 1 to (10,12)
+
+
 
 
 ## How Trainer Behave: 
