@@ -100,5 +100,13 @@ There are several commands you can use to play this game:
 Stating the game, each trainer will have:
 - 25 health
 - 0 experiences
-- 0 poke dollars. 
+- 0 pokedollars. 
+
+Everytime the trainer moves, the trainer will lose 1 health:
+- Trainer lose 1 health when moves 1 tick
+
+However, the trainer will also gain a random number of pokedollar each time it moves
+- trainer gain a random amount of (between $0.0-$2.0) pokedollar when it moves (1 tick)
+
+So, the trainer loses health when it moves but gains pokedollars in the meanwhile. 
 
