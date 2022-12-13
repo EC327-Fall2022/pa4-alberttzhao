@@ -149,9 +149,3 @@ When an object dies:
         - the trainer will disappear from the grid 
         - the trainer's information, such as location, amount of money and experiences, will also disappear from the information list
 
-
-
-
-
-
-
