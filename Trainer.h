@@ -93,6 +93,7 @@ private:
     //PA4:
     //From Thomas's suggestion:
     vector<WildPokemon *> bundledWildPokemon;
+    WildPokemon* wildpokemon_array[100];
 
 };
 

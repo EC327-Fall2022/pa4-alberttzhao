@@ -70,7 +70,7 @@ Model::Model()
     Point2D WildPokemon1_location;
     WildPokemon1_location.x = 10;
     WildPokemon1_location.y = 12;
-    WildPokemon* WildPokemon1_ptr = new WildPokemon("Eevee", 2, 5, false, 1, WildPokemon1_location); //using default constructor? 
+    WildPokemon* WildPokemon1_ptr = new WildPokemon("Eevee", 2, 4, false, 1, WildPokemon1_location); //using default constructor? 
     object_ptrs.push_back(WildPokemon1_ptr);
     active_ptrs.push_back(WildPokemon1_ptr);
     WildPokemon_ptrs.push_back(WildPokemon1_ptr);

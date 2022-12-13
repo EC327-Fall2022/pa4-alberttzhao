@@ -78,7 +78,7 @@ bool WildPokemon::Update()
     DEAD = 1,
     IN_TRAINER = 2
     */
-   
+
     switch(state)
     {
         case 0:
@@ -170,8 +170,8 @@ string WildPokemon::GetName()
 
 void WildPokemon::UpdateLocation(Point2D trainer_location_update)
 {   
-    state = IN_TRAINER;
     health = health - 1;
+    state = IN_TRAINER;
     location = trainer_location_update;
 
     current_trainer->ReduceHealth(attack);

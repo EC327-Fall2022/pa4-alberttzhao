@@ -120,9 +120,9 @@ When a trainer appraoches a wildpokemon (at the same location):
 - trainer's display code will turn to a lower case t
      - However, on the grid, it will only display W even if a wildpokemon is following a trainer. 
      - So for example, when wildpokmeon W1 starts to follow trainer T1, instead of displaying * on the grid, it will just display W1. 
-- every time the trainer moves, it's health will decrease by wildpokemon's attack value, instead of the usual 1. 
+- every time the trainer moves, it's health will decrease by wildpokemon's attack value + 1, instead of the usual 1. 
     - for example:
-        if a wildpokemon has an attack value of 3. Everytime time trainer takes a step while followed by the wildpokemon, it's health will be reduced by 3. 
+        if a wildpokemon has an attack value of 3. Everytime time trainer takes a step while followed by the wildpokemon, it's health will be reduced by 4. 
 - however, each time wildpokemon takes a step, it will also lose its health by 1
     - it is possible for wildpokemon to die!
 

@@ -501,6 +501,11 @@ bool Trainer::UpdateLocation()
             //visial:
             cout << "---" << endl;
         }
+        // if(following_wild_pokemon == true)
+        // {
+        //     wildpokemon_array[0]->UpdateLocation(location);
+        //     cout << "---" << endl;
+        // }
 
 
         cout << "---" << endl;
@@ -542,7 +547,21 @@ double GetRandomAmountOfPokeDollars()
 // //Added for PA4: 
 void Trainer::StartFollowingWildPokemon(Model* model, int trainer_id, int wildpokemon_id)
 {
-    bundledWildPokemon.push_back(model->GetWildPokemonPtr(wildpokemon_id));
+
+    bool already_contained = false;
+    for(int i = 0; i < bundledWildPokemon.size(); i++)
+    {
+        if(bundledWildPokemon[i] == model->GetWildPokemonPtr(wildpokemon_id))
+        {
+            already_contained = true;
+            break;
+        }
+    }
+    
+    if(already_contained == false)
+    {
+        bundledWildPokemon.push_back(model->GetWildPokemonPtr(wildpokemon_id));
+    }
 
     model->GetWildPokemonPtr(wildpokemon_id)->follow(model->GetTrainerPtr(trainer_id));
 
